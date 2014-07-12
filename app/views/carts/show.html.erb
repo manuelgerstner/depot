@@ -1,0 +1,10 @@
+<% if notice %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+
+<h2>Your super cool shopping cart!</h2>
+<ul>
+  <% @cart.line_items.each  do |item| %>
+    <li><%= item.product.title %></li>
+  <% end %>
+</ul>
