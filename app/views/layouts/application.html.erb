@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Depot</title>
+  <title>Manus Rails Online Store</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
 
-<%= yield %>
+    <div id='banner'>
+      <%= image_tag('logo.png') %>
+      <%= @page_title || "Pragmatic Bookshelf" %>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <ul>
+          <li><strong><%= Time.now.strftime("%A, %B %e") %></li></strong></br>
+          <li><a href="http://www......">Home</a></li>
+          <li><a href="http://www....../faq">FAQ</a></li>
+          <li><a href="http://www......./news">News</a></li>
+          <li><a href="http://www....../contact">Contact</a></li></br>
+          <% if @count.to_i > 5 %>
+              <li>Currently viewing the catalog for the <%= pluralize(@count, 'time') %></li>
+          <% end %>
+        </ul>
+        <div class="counter">
+        </div>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
 
 </body>
 </html>
